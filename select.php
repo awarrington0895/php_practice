@@ -4,7 +4,7 @@
     /* open database connection
         mysqli_connect(server, userID, password, databaseName)
         userID = root
-        password = ''    this databae has no password
+        password = ''    this database has no password
         databaseName = ch11db
     */
     $con = mysqli_connect('localhost','root','','ch11db');
