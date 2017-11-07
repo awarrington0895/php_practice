@@ -13,20 +13,19 @@
         die('Could not connect: ' . mysqli_error($con));
     }
 
-    $sql = "INSERT INTO employee (id, name, sex, salary)
-            VALUES (".$_POST['id'].", '".$_POST['name']."', '".$_POST['sex']."', ".$_POST['salary'].")";
+    $sql = "UPDATE employee
+            SET salary = ".$_POST['salary']." 
+            WHERE id = ".$_POST['id'];
 
     echo $sql."<br>";
     $result = mysqli_query($con, $sql);
 
-    // If rows are affected, return confirmation message
-    // else return error message from database
-    if(mysqli_affected_rows($con) > 0) {
-        echo "Entry added successfully";
+    if(mysqli_affected_rows($con) == 1){
+        echo "Entry updated successfully";
     }
     else {
-        echo mysqli_error($con);
+        echo mysqli_error($con)."<br>";
     }
 
-
+    
 ?>
