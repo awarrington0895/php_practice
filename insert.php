@@ -14,8 +14,19 @@
     }
 
     $sql = "INSERT INTO employee (id, name, sex, salary)
-            VALUES (".$_POST['id'].", ".$_POST['id'].", ".$_POST['id'].", ".$_POST['id'].")";
+            VALUES (".$_POST['id'].", '".$_POST['name']."', '".$_POST['sex']."', ".$_POST['salary'].")";
 
     echo $sql."<br>";
+    $result = mysqli_query($con, $sql);
+
+    // If rows are affected, return confirmation message
+    // else return error message from database
+    if(mysqli_affected_rows($con) > 0) {
+        echo "Entry added successfully";
+    }
+    else {
+        echo mysqli_error($con);
+    }
+
 
 ?>
